@@ -41,7 +41,7 @@ const Task = props => {
           />
         </div>
         <button type="submit" onClick={props.createTask.bind(this, projectId)}>
-          Создать проект
+          Создать задачу
         </button>
       </form>
     </>

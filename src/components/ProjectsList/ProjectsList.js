@@ -10,12 +10,7 @@ const ProjectsList = ({projects, tasks}) => {
             className={styles.ProjectsList}
             key={projectKey}
             to={{
-              pathname: `/${el}`,
-              state: {
-                project: projects[el].name,
-                tasksIds: projects[el].tasksIds,
-                tasks
-              }
+              pathname: `/${el}`
             }}
           >
             <span>Название проекта:&nbsp;{projects[el].name}</span>

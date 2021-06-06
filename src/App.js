@@ -73,7 +73,6 @@ class App extends React.Component {
         tasksIds: []
       }
       this.setState({projectsById})
-      this.setState({projectName: ''})
       return
     }
     alert('Впишите название проекта.')
@@ -92,9 +91,6 @@ class App extends React.Component {
       }
       projectsById[projectId].tasksIds.push(id)
       this.setState({
-        taskName: '',
-        taskDescription: '',
-        taskCompleted: '',
         projectsById,
         tasksById
       })
