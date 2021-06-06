@@ -1,24 +1,22 @@
 import {Link} from 'react-router-dom'
 import styles from './ProjectsList.module.scss'
+import {connect} from 'react-redux'
 
-const ProjectsList = ({projects, tasks}) => {
+const ProjectsList = props => {
   return (
     <>
-      {Object.keys(projects).map((el, projectKey) => {
+      {Object.keys(props.state.todo.projectsById).map((el, projectKey) => {
         return (
           <Link
             className={styles.ProjectsList}
             key={projectKey}
             to={{
-              pathname: `/${el}`,
-              state: {
-                project: projects[el].name,
-                tasksIds: projects[el].tasksIds,
-                tasks
-              }
+              pathname: `/${el}`
             }}
           >
-            <span>Название проекта:&nbsp;{projects[el].name}</span>
+            <span>
+              Название проекта:&nbsp;{props.state.todo.projectsById[el].name}
+            </span>
           </Link>
         )
       })}
@@ -26,4 +24,6 @@ const ProjectsList = ({projects, tasks}) => {
   )
 }
 
-export default ProjectsList
+const mapStateToProps = state => ({state})
+
+export default connect(mapStateToProps, null)(ProjectsList)
