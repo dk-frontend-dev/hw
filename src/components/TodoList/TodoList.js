@@ -1,8 +1,9 @@
 import Todo from '../Todo/Todo'
+import styles from './TodoList.module.scss'
 
 const TodoList = ({todos, toggleComplete}) => {
   return (
-    <div className="TodoList">
+    <div className={styles.TodoList}>
       {todos &&
         todos.map((todo, index) => (
           <Todo
