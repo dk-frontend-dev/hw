@@ -1,6 +1,8 @@
+import styles from './TodoForm.module.scss'
+
 const TodoForm = props => {
   return (
-    <form onSubmit={e => e.preventDefault()}>
+    <form className={styles.TodoForm} onSubmit={e => e.preventDefault()}>
       <div>
         <input
           name="todo"
@@ -19,11 +21,13 @@ const TodoForm = props => {
         />
       </div>
 
-      <button type="submit" onClick={props.addTask}>
-        Add Todo
-      </button>
+      <div>
+        <button type="submit" onClick={props.addTask}>
+          Add Todo
+        </button>
 
-      <button onClick={props.clearCompleted}>Clear Completed</button>
+        <button onClick={props.clearCompleted}>Clear Completed</button>
+      </div>
     </form>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import styles from './App.module.scss'
 import TodoList from './components/TodoList/TodoList'
 import TodoForm from './components/TodoForm/TodoForm'
 class App extends React.Component {
@@ -16,7 +16,8 @@ class App extends React.Component {
         }
       ],
       name: '',
-      description: ''
+      description: '',
+      theme: true
     }
   }
 
@@ -52,25 +53,39 @@ class App extends React.Component {
     alert('У вас не заполнены все поля.')
   }
 
+  switchTheme = () => {
+    document.body.classList.toggle('dark')
+    this.setState({theme: !this.state.theme})
+  }
+
   render() {
     return (
-      <div className="App">
-        <h2>Todo app</h2>
+      <>
+        <button
+          type="button"
+          className={styles.switcher}
+          onClick={this.switchTheme}
+        >
+          Поменять тему: {this.state.theme ? 'Светлая' : 'Темная'}
+        </button>
+        <div className={styles.App}>
+          <h2>Todo app</h2>
 
-        <TodoList
-          todos={this.state.todos}
-          toggleComplete={this.toggleComplete}
-        />
+          <TodoList
+            todos={this.state.todos}
+            toggleComplete={this.toggleComplete}
+          />
 
-        <TodoForm
-          todos={this.state.todos}
-          name={this.state.name}
-          description={this.state.description}
-          inputChangeHandler={this.inputChangeHandler}
-          addTask={this.addTask}
-          clearCompleted={this.clearCompleted}
-        />
-      </div>
+          <TodoForm
+            todos={this.state.todos}
+            name={this.state.name}
+            description={this.state.description}
+            inputChangeHandler={this.inputChangeHandler}
+            addTask={this.addTask}
+            clearCompleted={this.clearCompleted}
+          />
+        </div>
+      </>
     )
   }
 }

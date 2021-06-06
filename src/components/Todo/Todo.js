@@ -1,11 +1,13 @@
+import styles from './Todo.module.scss'
+
 const Todo = props => {
   return (
-    <div
-      className="Todo"
-      style={{border: '1px solid #000', padding: '20px', marginBottom: '10px'}}
-    >
-      <p>
-        {props.todo.task}: {props.todo.completed ? 'Сделано' : 'Не сделано'}
+    <div className={styles.Todo}>
+      <div>
+        <p className={props.todo.completed ? styles.done : null}>
+          {props.todo.task}: {props.todo.completed ? 'Сделано' : 'Не сделано'}
+        </p>
+
         <button
           key={props.todo.id}
           onClick={() => {
@@ -14,9 +16,11 @@ const Todo = props => {
         >
           Сделать
         </button>
-      </p>
+      </div>
 
-      <div>Описание: {props.todo.description}</div>
+      <div className={styles.description}>
+        Описание: {props.todo.description}
+      </div>
     </div>
   )
 }
